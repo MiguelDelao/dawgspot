@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './gameCard.css';
 
 function GameCard(props){
   const [token, setToken] = useState();
-
   const [showComments, setShowComments] = useState(false);
+  const navigate = useNavigate();
 
   const toggleComments = () => {
       setShowComments(!showComments);
       props.clicker();
   }
+
+  const editGame = () => {
+    navigate(`/edititem/${props.id}`);
+  };
 
   useEffect(() => {
     setToken(localStorage.getItem('auth-token'));
@@ -31,7 +36,7 @@ function GameCard(props){
             </div>
             <div className="divider"></div>
             <div className="half">
-                <div className="content betting-odds">UGA odds</div>
+                <div className="content betting-odds">{props.homeTeam} odds</div>
                 <div className="content bold betting-odds">{props.homeOdds}</div>
             </div>
             <div className="divider"></div>
@@ -46,7 +51,7 @@ function GameCard(props){
                     <button className="gc-button" onClick={toggleComments}>See Comments</button>
                     { token
                       ? <>
-                          <button className="gc-button">Manage Game</button>
+                          <button className="gc-button" onClick={editGame}>Manage Game</button>
                         </>
                       : <></>
                     }

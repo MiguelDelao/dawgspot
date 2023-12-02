@@ -9,6 +9,7 @@ import HomePage from './homepage/HomePage';
 import SignUp from './signup/SignUp';
 import Login from './login/Login';
 import AddItem from './additem/AddItem';
+import EditItem from './editItem/EditItem';
 
 import ErrorPage from './ErrorPage/ErrorPage';
 
@@ -57,6 +58,7 @@ function App() {
                     <Route path='/signup' element={<SignUp />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/additem' element={<AddItem />} />
+                    <Route path='/edititem/:id' element={<EditItem />} />
                     <Route path='*' element={<ErrorPage errorText="404 - Page Not Found!"/>} />
                 </Routes>
             </div>
