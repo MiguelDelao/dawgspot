@@ -37,9 +37,9 @@ function HomePage() {
             </div>
 
             <h1 className="section-header">Live Sports Games</h1>
-            { games == []
-              ? <CardList items={games}/>
-              : <p id="no-games-text">There are no games currently showing.</p>
+            { games.length === 0
+              ? <p id="no-games-text">There are no games currently showing.</p>
+              : <CardList items={games}/>
             }
         </div>
     )
