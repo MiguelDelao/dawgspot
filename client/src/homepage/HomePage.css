@@ -34,10 +34,20 @@
     margin-top: 10%;
 
     background-color: rgba(0, 0, 0, 0.783);
+    padding-top: 30px;
+    padding-bottom: 30px;
     
 }
 
 .section-header {
     text-align: center;
     text-decoration: underline;
+}
+
+#no-games-text {
+    
+    text-align: center;
+    font-size: 14pt;
+    margin-top: 50px;
+    margin-bottom: 200px;
 }
