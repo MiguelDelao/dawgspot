@@ -60,15 +60,16 @@ export default function SignUp() {
 
         } catch (err) {
           setLoading(false);
-          err.response.data.msg && setError(err.response.data.msg);
+          setError(err.response.data.msg);
         }
 
-
+        /* Don't need to reset these, because the user might encounter an error
         setUsername('');
         setPassword('');
         setConfirmPassword('');
         setEmail('');
         setProfilePic('');
+        */
     } // handleSubmit
 
   return (
@@ -80,6 +81,7 @@ export default function SignUp() {
       <form onSubmit={handleSubmit}>
 
         <h1>Sign Up</h1>
+        {error ? <p id="signup-error-text">{`Error: ${error}`}</p> : <></> }
         <hr className="hr"/>
         
         <input className="username-entry" placeholder='Username' type="text" id="username" name="username" required onChange={e => setUsername(e.target.value)}/>

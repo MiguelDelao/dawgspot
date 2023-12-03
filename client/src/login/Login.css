@@ -57,8 +57,14 @@
 
 #login-password-box {
     margin-left: 0px;
+    width: 250px;
 }
 
 #signup-button, #login-button {
     text-decoration: none;
+}
+
+#login-error-text {
+    color: red;
+    margin-bottom: 5px;
 }

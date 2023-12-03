@@ -42,13 +42,15 @@ function Login() {
             window.location.reload();
         } catch(err) { 
             setLoading(false);
-            err && setError(err);
+            setError(err.response.data.msg);
         } // try-catch
     } // loginHandler
 
     return (
         <div id="login-container" className="container">
             <h1 id="login-header">Login</h1>
+            {error ? <p id="login-error-text">{`Error: ${error}`}</p> : <></> }
+            
             <form onSubmit={loginHandler}>
                 <input id="login-username-box" type="text" placeholder="Email..." className="input-box" required onChange={e => setEmail(e.target.value)}/>
                 <br />

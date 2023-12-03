@@ -86,5 +86,9 @@ h1 {
     font-family: sans-serif;
 }
 
-
+#signup-error-text {
+    color: red;
+    margin-bottom: 5px;
+    text-align: center;
+}
 
