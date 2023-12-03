@@ -13,7 +13,6 @@ const items = [
 
 function HomePage() {
     const [games, setGames] = useState([]);
-
     useEffect(() => {
         const fetchGames = async () => {
             try {

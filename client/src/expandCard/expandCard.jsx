@@ -1,10 +1,47 @@
-import React from "react";
-import { useState, useRef } from "react";
+
+import React, { useEffect, useState, useRef } from "react";
 import "./expandCard.css"
 
 import GameCard from "../gameCard/gameCard";
+import CommentList from "../commentlist/CommentList";
+
+import axios from 'axios';
 
 function ExpandCard(props) {
+    const [comments, setComments] = useState([])
+    const [nameText, setNameText] = useState("");
+    const [commentText, setCommentText] = useState("");
+
+    useEffect(() => {
+        const fetchComments = async () => {
+            try {
+                const response = await axios.get('http://localhost:8089/api/comments/')
+                setComments(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchComments();
+    }, []);
+    const nameTextChangeHandler = event => setNameText(event.target.value);
+    const commentTextChangeHandler = event => setCommentText(event.target.value);
+    const addCommentSubmitHandler = async (e) => {
+        e.preventDefault();
+        try {
+            const comment = {
+                name: nameText,
+                content: commentText,
+                game: props.id
+            }
+            await axios.post('http://localhost:8089/api/comments', comment);
+        
+        } catch (err) {
+            console.log(err);
+        }
+        window.location.reload();
+    }
+
     const [open,setOpen] = useState(false);
     const lowerRef = useRef(null);
     const containerRef = useRef(null);
@@ -44,20 +81,17 @@ function ExpandCard(props) {
                 />
             </div>
             <div className="lower">
-              <p>John Doe</p>
-              <h3>
-                God I hate that other team!!! Go our team !!!!
-              </h3>
-              <p>Jane smith</p>
-              <h3>
-                Go team!!!
-              </h3>
-    
-              <h4>Add a comment</h4>
-            <input type="text" className="ex-text"/>
-            <button type="submit" className="ex-button">Submit</button>
-
-
+              <CommentList
+                gameId={props.id}
+                comments={comments}
+              />
+              <div id="post-comment">
+                <form onSubmit={addCommentSubmitHandler}>
+                    <input id="name-box" type="text" required placeholder="Name" value={nameText} onChange={nameTextChangeHandler} maxLength={10}></input>
+                    <input id="comment-input-box" type="text" required placeholder="Type a comment.." value={commentText} onChange={commentTextChangeHandler} maxLength={38}></input>
+                    <button type="submit" id="post-comment-btn">Post</button>
+                </form>
+              </div>
             </div>
 
 

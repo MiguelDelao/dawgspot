@@ -24,9 +24,11 @@ mongoose.connect(conn_str)
 });
 
 const users = require('./routes/api/users');
-const games = require('./routes/api/games')
+const games = require('./routes/api/games');
+const comments = require('./routes/api/comments');
 app.use('/api/users', users);
 app.use('/api/games', games);
+app.use('/api/comments', comments);
 
 // Server Routes
 app.get('/', (req, res) => res.send('Hello, world!'));

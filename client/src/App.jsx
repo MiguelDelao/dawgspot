@@ -38,7 +38,7 @@ function App() {
                 const userRes = await axios.get('http://localhost:8089/api/users', {
                     header: { 'x-auth-token': token },
                 });
-
+                
                 setUserData({
                     token,
                     user: userRes.data,
