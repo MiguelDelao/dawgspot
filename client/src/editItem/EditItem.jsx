@@ -97,7 +97,7 @@ function EditItem(props) {
         navigate('/');
     }
     const handleDelete = async () => {
-        axios.delete(`http://localhost:8089/api/games/${id}`)
+        await axios.delete(`http://localhost:8089/api/games/${id}`)
         .then((res) => {
             console.log('Successfully deleted item');
             navigate('/');
