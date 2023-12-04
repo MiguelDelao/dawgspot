@@ -19,4 +19,9 @@
   cursor: pointer;
   text-decoration: underline;
   margin-right: 20px;
+  color: rgb(220, 0, 0);
+}
+
+.custom-link:hover {
+  color: black;
 }

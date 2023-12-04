@@ -11,6 +11,7 @@ body{
     margin: 0px;
     padding: 0px;
     border-radius: 8px;
+    margin-top: 30px;
 }
 
 .nav {
@@ -86,9 +87,24 @@ h1 {
     font-family: sans-serif;
 }
 
+#signup-header-text {
+    color: red;
+}
+
 #signup-error-text {
     color: red;
     margin-bottom: 5px;
     text-align: center;
 }
 
+#submit-btn {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: 12pt;
+    transition: 0.1s;
+}
+
+#submit-btn:hover {
+    background-color: rgb(209, 209, 209);
+}

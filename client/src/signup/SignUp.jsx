@@ -74,13 +74,10 @@ export default function SignUp() {
 
   return (
     <div className="SignUp">
-      <nav className="nav">
-        <h2>DawgSpot</h2>
-      </nav>
-      
+
       <form onSubmit={handleSubmit}>
 
-        <h1>Sign Up</h1>
+        <h1 id="signup-header-text">Sign Up</h1>
         {error ? <p id="signup-error-text">{`Error: ${error}`}</p> : <></> }
         <hr className="hr"/>
         
@@ -97,8 +94,8 @@ export default function SignUp() {
         <input placeholder="Email" type="email" id="email" name="email" required onChange={e => setEmail(e.target.value)}/>
         <br />
         <div className="bottom-btns">
-        <button type="submit" className="pill-btn">Submit</button>
-        <Link to="/login" className="pill-btn">Login</Link>
+        <button type="submit" className="pill-btn" id="submit-btn">Sign Up</button>
+        <Link to="/login" className="pill-btn">Go to Login</Link>
         </div>
       </form>
     </div>
